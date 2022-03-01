@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "f1148bb3-f14a-48dc-b304-c6b392c600ae",
+		"name": "API Demo POST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateTelemetries",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"TruckId\": 2,\r\n    \"OilPressure\": 3000,\r\n    \"Speed\": 500,\r\n    \"Longitude\": 12.5,\r\n    \"Latitude\": 11.2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44384/api/telemetry/CreateTelemetries",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44384",
+					"path": [
+						"api",
+						"telemetry",
+						"CreateTelemetries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTrucks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Manufacturer\": \"Toyota\",\r\n    \"Model\": \"TY003\",\r\n    \"PurchaseDate\": \"2020-12-02\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44384/api/trucks/CreateTrucks",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44384",
+					"path": [
+						"api",
+						"trucks",
+						"CreateTrucks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
