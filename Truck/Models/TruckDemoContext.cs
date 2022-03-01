@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Truck.Models
+namespace TruckAPI.Models
 {
     public partial class TruckDemoContext : DbContext
     {
@@ -15,15 +15,14 @@ namespace Truck.Models
         {
         }
 
-        public virtual DbSet<Telemetry> Telemetry { get; set; }
-        public virtual DbSet<Truck> Truck { get; set; }
+        public virtual DbSet<Telemetry> Telemetries { get; set; }
+        public virtual DbSet<Truck> Trucks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=AU-FRE-L0302;Database=TruckDemo;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Name=TruckDemo");
             }
         }
 
@@ -31,14 +30,19 @@ namespace Truck.Models
         {
             modelBuilder.Entity<Telemetry>(entity =>
             {
+                entity.ToTable("Telemetry");
+
                 entity.HasOne(d => d.Truck)
-                    .WithMany(p => p.Telemetry)
+                    .WithMany(p => p.Telemetries)
                     .HasForeignKey(d => d.TruckId)
-                    .HasConstraintName("FK__Telemetry__Truck__2B3F6F97");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Telemetry_Truck");
             });
 
             modelBuilder.Entity<Truck>(entity =>
             {
+                entity.ToTable("Truck");
+
                 entity.Property(e => e.Manufacturer)
                     .IsRequired()
                     .HasMaxLength(100);

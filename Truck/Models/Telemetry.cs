@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Truck.Models
+namespace TruckAPI.Models
 {
     public partial class Telemetry
     {

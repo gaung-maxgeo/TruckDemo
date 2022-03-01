@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Truck.Models
+namespace TruckAPI.Models
 {
     public partial class Truck
     {
         public Truck()
         {
-            Telemetry = new HashSet<Telemetry>();
+            Telemetries = new HashSet<Telemetry>();
         }
 
         public int Id { get; set; }
@@ -15,6 +15,6 @@ namespace Truck.Models
         public string Model { get; set; }
         public DateTime PurchaseDate { get; set; }
 
-        public virtual ICollection<Telemetry> Telemetry { get; set; }
+        public virtual ICollection<Telemetry> Telemetries { get; set; }
     }
 }
